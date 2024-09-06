@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Crop Prediction Form</h2>
+        <form action="/predict" method="POST">
+            <label for="Nitrogen">Nitrogen:</label>
+            <input type="text" name="Nitrogen" id="Nitrogen" required>
+
+            <label for="Phosphorus">Phosphorus:</label>
+            <input type="text" name="Phosphorus" id="Phosphorus" required>
+
+            <label for="Potassium">Potassium:</label>
+            <input type="text" name="Potassium" id="Potassium" required>
+
+            <label for="Temperature">Temperature (°C):</label>
+            <input type="text" name="Temperature" id="Temperature" required>
+
+            <label for="Humidity">Humidity (%):</label>
+            <input type="text" name="Humidity" id="Humidity" required>
+
+            <label for="Ph_value">pH Value:</label>
+            <input type="text" name="Ph_value" id="Ph_value" required>
+
+            <label for="Rainfall">Rainfall (mm):</label>
+            <input type="text" name="Rainfall" id="Rainfall" required>
+
+            <input type="submit" value="Predict Crop">
+        </form>
+
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
